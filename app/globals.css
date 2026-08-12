@@ -1,0 +1,242 @@
+@import "tailwindcss";
+
+@theme {
+  /* Vitasilk Coconut Smooth — coconut cream palette (cream / palm / gold)
+     ------------------------------------------------------------------
+     Light theme, like the vitasilk_24k sibling, but with one structural
+     addition: a TEXT-CAPABLE ACCENT. See the contrast block further down —
+     that addition is the whole point of this palette. */
+
+  --color-cream: #faf6ef; /* page background */
+  --color-shell: #f2ebdf; /* alternating section background */
+  --color-sand: #e7dcc9; /* cards, pills, chips, hairlines */
+  --color-sand-deep: #d9cbb0; /* motes, dividers, inactive dots */
+
+  /* palm is the accent that CARRIES TEXT — 8.9:1 on cream. This is the role
+     gold cannot fill on a light ground (see below). */
+  --color-palm: #1f4d3d;
+  --color-palm-deep: #12332a; /* the two full-bleed dark bands */
+  --color-palm-dark: #0b211b; /* deepest band / footer */
+  /* frond is the accent that carries text ON the dark bands — 6.9:1 there.
+     It is far too light for cream (1.9:1) and must never appear on one. */
+  --color-frond: #8fc4a8;
+
+  --color-gold: #c9a227; /* brand metal — DISPLAY AND FILLS ONLY on light */
+  --color-gold-light: #e8c86a;
+  --color-gold-deep: #9a7b1e; /* the only text-safe gold on light, large only */
+
+  --color-bark: #241d16; /* body text on light — 15:1 on cream */
+  --color-husk: #6b5b45; /* secondary text — 6.1:1 on cream */
+  --color-coconut: #f7f2e8; /* body text on the dark bands — 12.4:1 there */
+
+  --font-display: var(--font-cormorant), var(--font-reem-kufi), serif;
+  --font-body: var(--font-jost), var(--font-tajawal), sans-serif;
+
+  --animate-shimmer: shimmer 2.8s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-glow: glow 2.8s ease-in-out infinite;
+
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+  }
+  /* The primary CTA is palm green, so unlike the ivory sibling this glow can be
+     a real coloured halo rather than a warm drop shadow standing in for one —
+     green on cream separates where gold on ivory did not. The expanding ring is
+     kept from that project because it reads at a glance even where the halo is
+     subtle. */
+  @keyframes glow {
+    0%, 100% {
+      box-shadow: 0 10px 30px -8px rgba(31, 77, 61, 0.45), 0 0 0 0 rgba(31, 77, 61, 0.4);
+    }
+    50% {
+      box-shadow: 0 16px 42px -8px rgba(31, 77, 61, 0.6), 0 0 0 12px rgba(31, 77, 61, 0);
+    }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-bark);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+/* Arabic mode: swap font stacks so AR glyphs lead */
+[dir="rtl"] body,
+[dir="rtl"] {
+  --font-display: var(--font-reem-kufi), var(--font-cormorant), sans-serif;
+  --font-body: var(--font-tajawal), var(--font-jost), sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* ---------------------------------------------------------------------------
+   THE CONTRAST RULES — three of them, and the third is specific to this palette.
+
+   1. GOLD IS DISPLAY-ONLY ON LIGHT. Brand gold #c9a227 measures 2.0:1 on cream.
+      The ramp below is capped at #9a7b1e, the lightest gold that still clears
+      the 3:1 large-text threshold against shell (#f2ebdf → 3.4:1). Nothing under
+      24px is ever gold on a light ground. This rule is inherited verbatim from
+      the vitasilk_24k sibling.
+
+   2. `palm` IS THE TEXT ACCENT — and this is what the ivory sibling lacks.
+      #1f4d3d measures 8.9:1 on cream, 8.1:1 on shell and 7.1:1 on sand. Every
+      small accent that 24k was forced to render in flat espresso (eyebrows,
+      step numerals, icon strokes, list bullets, links) is palm green here. If
+      you find yourself reaching for gold on small text, reach for palm instead.
+
+   3. `sand` IS THE TIGHTEST SURFACE ON THE PALETTE. gold-deep on sand measures
+      2.96:1 — it fails even the 3:1 large-text floor, by a hair. Gold display
+      type sits on cream or shell ONLY, never on a sand chip. palm on sand is
+      7.1:1 and husk on sand is 4.8:1, so both are safe there; gold is not.
+      This is the rule a token sweep from a sibling will silently break.
+
+   On the two full-bleed dark bands the polarity inverts and gold is freed:
+   gold on palm-deep is 5.7:1 and carries text at any size. That is what the
+   `-on-dark` variants below exist for. `frond` is the text-capable green there
+   (6.9:1) — it is the mirror of `palm`, and the two are never interchangeable.
+--------------------------------------------------------------------------- */
+
+/* Gold gradient text — ONLY for 24px+ display type on cream/shell. */
+.text-gold-gradient {
+  background: linear-gradient(100deg, #6a5210 0%, #85680f 35%, #9a7b1e 50%, #85680f 65%, #6a5210 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gold-shimmer {
+  background: linear-gradient(100deg, #6a5210 0%, #85680f 30%, #9a7b1e 50%, #85680f 70%, #6a5210 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: var(--animate-shimmer);
+}
+
+/* Brighter ramp for the full-bleed palm-deep sections (BrandStory, Offer),
+   where the deep ramp above would disappear into the background. */
+.text-gold-gradient-on-dark {
+  background: linear-gradient(100deg, #a8862a 0%, #e8c86a 35%, #f6e3a1 50%, #e8c86a 65%, #a8862a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gold-shimmer-on-dark {
+  background: linear-gradient(100deg, #a8862a 0%, #e8c86a 35%, #fff3c4 50%, #e8c86a 65%, #a8862a 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: var(--animate-shimmer);
+}
+
+/* The primary CTA.
+   ----------------
+   A DIVERGENCE FROM THE THREE SIBLING SKUS, and the reason is contrast, not
+   taste. Those pages fill the button with the gold gradient. On a dark page
+   that is fine — the gold surface separates from the ground at 8:1. On THIS
+   page the ground is cream, where brand gold measures 2.0:1: the label stays
+   legible (bark on gold is 6.5:1) but the button's own edge fails the 3:1
+   non-text floor, so the control stops reading as a control. A palm fill
+   separates at 5.9:1 and takes cream text at 5.9:1 — both ends fixed at once.
+
+   Gold is not lost, it is demoted to trim: the hairline ring and the shimmer
+   sweep. The brand metal still frames every CTA.
+
+   It lives here as one class rather than inline because there are five call
+   sites (Hero, Offer, StickyCta, and two in OrderForm). Five copies of a
+   40-token class string is precisely how a palette drifts. */
+.cta-primary {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(100deg, #1f4d3d 0%, #2b6a54 50%, #1f4d3d 100%);
+  color: var(--color-cream);
+  border: 1px solid rgba(201, 162, 39, 0.45);
+}
+
+.cta-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 35%, rgba(232, 200, 106, 0.28) 50%, transparent 65%);
+  background-size: 250% auto;
+  animation: shimmer 3.6s linear infinite;
+  pointer-events: none;
+}
+
+/* The SAME button inside the palm-dark Offer band, where the polarity flips.
+   A palm fill on palm-dark separates at 2.6:1 and the control disappears — the
+   exact failure `.cta-primary` was built to avoid, arriving from the other
+   side. On this ground gold is the high-contrast option (6.9:1 surface, 6.5:1
+   for the bark label), so the sibling projects' gold button is correct HERE and
+   only here. Do not unify these two into one class. */
+.cta-on-dark {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(100deg, #c9a227 0%, #e8c86a 50%, #c9a227 100%);
+  color: var(--color-bark);
+}
+
+.cta-on-dark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 35%, rgba(255, 255, 255, 0.35) 50%, transparent 65%);
+  background-size: 250% auto;
+  animation: shimmer 3.6s linear infinite;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-primary::after,
+  .cta-on-dark::after {
+    animation: none;
+  }
+}
+
+/* Fine gold hairline borders */
+.border-gold-hairline {
+  border: 1px solid rgba(201, 162, 39, 0.32);
+}
+
+.border-gold-hairline-on-dark {
+  border: 1px solid rgba(232, 200, 106, 0.28);
+}
+
+/* Radial vignette behind the hero bottle.
+   The core is PALM GREEN, not gold. This bottle is white on a cream page —
+   the lowest product/ground separation of any SKU in the line, and a warm halo
+   behind it leaves the silhouette dissolving into the background. The green
+   core pushes the white forward; the gold mid-stop keeps it on the brand ramp.
+   (The blue sibling reached the same conclusion from the opposite direction:
+   a blue bottle needed a blue core, because gold left it flat.) */
+.product-halo {
+  background: radial-gradient(closest-side, rgba(31, 77, 61, 0.22), rgba(201, 162, 39, 0.14) 52%, transparent 78%);
+}
+
+/* Soft warm elevation — a black-based shadow reads as dirt on cream. */
+.shadow-luxe {
+  box-shadow: 0 18px 45px -20px rgba(36, 29, 22, 0.26), 0 2px 8px -4px rgba(36, 29, 22, 0.1);
+}
+
+::selection {
+  background: rgba(31, 77, 61, 0.2);
+  color: var(--color-bark);
+}
