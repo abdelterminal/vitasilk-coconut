@@ -35,11 +35,11 @@ const tajawal = Tajawal({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Vitasilk Coconut Smooth — Coco & Amande Douce 1L | زيت جوز الهند واللوز",
+  title: "Vitasilk Coconut Smooth — Coco & amande douce 1L | زيت جوز الهند واللوز",
   description:
     "Vitasilk Coconut Smooth 1L — soin professionnel à l'huile de coco et à l'amande douce, porté par la protéine brésilienne. La coco pénètre la fibre au lieu de la couvrir. Sans formol ni acide glyoxylique. Complexe anti-frizz, nutrition profonde. Livraison gratuite au Maroc, paiement à la livraison.",
   openGraph: {
-    title: "Vitasilk Coconut Smooth — Coco & Amande Douce 1L",
+    title: "Vitasilk Coconut Smooth — Coco & amande douce 1L",
     description:
       "L'huile de coco pénètre la fibre au lieu de la couvrir. Amande douce, protéine brésilienne et complexe anti-frizz. Sans formol, sans acide glyoxylique. Livraison gratuite au Maroc — paiement à la livraison.",
     // dimensions come from the file, so they cannot drift out of sync with it
