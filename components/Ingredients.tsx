@@ -45,7 +45,7 @@ export function Ingredients() {
                 className="rounded-2xl border-gold-hairline bg-shell px-5 py-4"
               >
                 <h3 className="font-display text-lg text-bark">{item.name}</h3>
-                <p className="mt-1 text-sm leading-relaxed text-husk">{item.desc}</p>
+                <p className="mt-1 text-base leading-relaxed text-husk">{item.desc}</p>
               </li>
             ))}
           </ul>
