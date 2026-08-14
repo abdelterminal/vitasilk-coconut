@@ -166,20 +166,20 @@ export const fr = {
     subtitle: "Plus de 12 000 clientes satisfaites au Maroc",
     items: [
       {
-        name: "Salma — Casablanca",
+        name: "Nawal — El Jadida",
         text: "J'ai fait des bains d'huile de coco pendant des années sans grand résultat. En suivant les instructions, j'ai trouvé mes cheveux plus doux et plus faciles à coiffer, pas seulement brillants en surface.",
       },
       {
-        name: "Imane — Rabat",
+        name: "Kenza — Mohammedia",
         text: "Ce qui m'a convaincue, c'est qu'il ne graisse pas. J'ai les cheveux fins et j'avais peur que ça les alourdisse — au contraire, ils ont plus de mouvement.",
       },
       {
-        name: "Khadija — Marrakech",
+        name: "Siham — Safi",
         text: "Je suis coiffeuse et je l'utilise en cabine. L'application est confortable, et l'odeur de coco fait que mes clientes le réclament.",
       },
       {
-        name: "Sara — Tanger",
-        text: "Avec l'humidité de Tanger, mes cheveux gonflaient à peine sortie de chez moi. Depuis le Coconut Smooth, ils restent bien plus disciplinés toute la journée.",
+        name: "Loubna — Larache",
+        text: "Avec l'humidité de Larache, mes cheveux gonflaient à peine sortie de chez moi. Depuis le Coconut Smooth, ils restent bien plus disciplinés toute la journée.",
       },
     ],
   },
