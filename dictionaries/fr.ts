@@ -22,7 +22,7 @@
 // Smooth" is what is printed on the bottle the customer receives.
 
 export const fr = {
-  announce: "Livraison gratuite partout au Maroc — Paiement à la livraison",
+  announce: "Livraison gratuite partout au Maroc — paiement à la livraison",
   nav: { brand: "Vitasilk", cta: "Commander" },
   hero: {
     eyebrow: "Vitasilk Professional",
@@ -33,7 +33,7 @@ export const fr = {
     cta: (price: string) => `Commander — ${price}`,
     badge1: "0 % de formol",
     badge2: "1 L — format professionnel",
-    badge3: "Coco & amande douce",
+    badge3: "Coco et amande douce",
     scroll: "Découvrir",
   },
   marquee: [
@@ -115,7 +115,7 @@ export const fr = {
     // order matches ICONS[] in components/Benefits.tsx
     items: [
       {
-        title: "Anti-frizz qui tient",
+        title: "Action anti-frisottis durable",
         desc: "Les frisottis se calment et le brushing tient bien plus longtemps, même par temps humide.",
       },
       {
@@ -133,7 +133,7 @@ export const fr = {
     ],
   },
   brandStory: {
-    eyebrow: "Coco & amande",
+    eyebrow: "Coco et amande",
     title: "Deux huiles, deux rôles",
     subtitle:
       "La coco travaille à l'intérieur de la fibre, l'amande douce à l'extérieur. C'est cette division du travail qui fait la différence avec un bain d'huile ordinaire — et c'est pour cela que le résultat tient après le rinçage au lieu de partir avec.",
@@ -156,7 +156,7 @@ export const fr = {
         desc: "Appliquez le Coconut Smooth mèche par mèche — environ 50 à 80 ml selon la longueur — puis laissez poser 20 à 40 minutes.",
       },
       {
-        title: "Rincez & coiffez",
+        title: "Rincez et coiffez",
         desc: "Rincez, séchez, puis passez le fer à lisser pour sceller la fibre.",
       },
     ],
@@ -186,7 +186,7 @@ export const fr = {
   offer: {
     title: "Offre spéciale",
     subtitle: "Stock limité — profitez du prix spécial",
-    unit: "Coconut Smooth — coco & amande douce 1 L",
+    unit: "Coconut Smooth — coco et amande douce, 1 L",
     save: (pct: number) => `Économisez ${pct} %`,
     freeDelivery: "Livraison gratuite",
     cod: "Paiement à la livraison",
